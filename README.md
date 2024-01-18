@@ -1,6 +1,6 @@
 # Simple Camera Calibration in Python for Beginners
 
-This is a collection of algorithms related to multiple view camera calibration in computer vision.  Please note that the goal of this package is to provide *minimal* examples to demostrate the concept for beginners (i.e., students).  For large-scale, realtime, accurate, robust, production-quality implementations, or for implementations for your specific situation, please consult your advisor.
+This is a collection of algorithms related to multiple view camera calibration in computer vision.  Please note that the goal of this package is to provide *minimal* examples to demostrate the concept for beginners (i.e., students).  For large-scale, real-time, accurate, robust, production-quality implementations, or for implementations for your specific situation, please consult your advisor.
 
 
 ## Disclaimer
@@ -68,7 +68,7 @@ In general, prepare some synthetic dataset, i.e., a toy example, first so that y
 Also you may want to read Section A6.3 "A sparse Levenberg-Marquardt algorithm" of the textbook "Multiple View Geometry in Computer Vision" by Hartley and Zisserman.
 
 1. **Linear calibration:** Use `numpy`.
-2. **Non-linear (including bundule adjustment):** Try `scipy.optimize.least_squares` first.
+2. **Non-linear (including bundle adjustment):** Try `scipy.optimize.least_squares` first.
    1. Implement your objective function as simple as possible. You do not need to consider the computational efficiency at all. *"Done is better than perfect."*
       * Test with the toy example and make sure that your objective function returns zero for the ground-truth parameter.
    2. If your simple objective function above is unacceptably slow, try the followings in this order.
@@ -76,7 +76,7 @@ Also you may want to read Section A6.3 "A sparse Levenberg-Marquardt algorithm" 
       2. Make sure that the optimization runs successfully anyway.  In what follows, double-check that the optimization results do not change before and after the optimization.
       3. Vectorize the computation with `numpy`, i.e., no for-loops in the objective function.
          * or use [`numba`](https://numba.pydata.org/) (e.g. `@numba.jit`)
-      4. If the system is sparse, use `jac_sparsity` option. It makes the optimization much faster even without analitical Jacobian.
+      4. If the system is sparse, use `jac_sparsity` option. It makes the optimization much faster even without analytical Jacobian.
       5. Implement the analytical Jacobian. You may want to use [maxima](http://wxmaxima-developers.github.io/wxmaxima/) to automate the calculation, or you may use [JAX](https://github.com/google/jax) or other autodiff solutions for this.
       6. Reimplement in C++ with [ceres-solver](http://ceres-solver.org/) or [sba](http://users.ics.forth.gr/~lourakis/sba/) if the computation speed is really important.
 
